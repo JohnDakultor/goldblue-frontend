@@ -116,7 +116,6 @@ export default function ProductDrawer() {
   const handleLogout = async () =>{
     try{
       await auth.logout();
-      localStorage.removeItem("jwt");
       localStorage.removeItem("accumulation");
       localStorage.removeItem("lastTotalDeposits");
       window.location.reload();
