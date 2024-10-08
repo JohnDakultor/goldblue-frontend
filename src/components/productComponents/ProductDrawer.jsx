@@ -82,7 +82,7 @@ export default function ProductDrawer() {
   const [darkMode, setDarkMode] = useLocalStorage("darkMode", false)
   const [user, setUser] = useState('');
 
-  const baseURL = "https://goldblue-backend-z2sk.vercel.app/api";
+  const baseURL = "https://gold-blue-backend-zk1834563cke-84ddfc10b917.herokuapp.com/api";
   
   const auth = useAuth()
 
