@@ -9,13 +9,15 @@ const withUserData = (WrappedComponent) => {
     const [modalTitle, setModalTitle] = useState('');
     const [modalContent, setModalContent] = useState('');
 
+    const baseUrl = 'https://gold-blue-backend-zk1834563cke-84ddfc10b917.herokuapp.com';
+
     const tokenLoggedOut = async () => {
       try {
         const token = window.localStorage.getItem('jwt');
         console.log('Token being sent:', token);
 
         const response = await axios.post(
-          'http://localhost:3001/api/userData',
+          `${baseUrl}/api/userData`,
           { token },
           {
             headers: {
