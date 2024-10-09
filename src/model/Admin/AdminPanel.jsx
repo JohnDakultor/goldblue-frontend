@@ -252,7 +252,8 @@ const AdminPanel = () => {
                                             <Typography>User ID: {deposit.user_id}</Typography>
                                             <Typography>Amount: ${deposit.amount}</Typography>
                                             <Typography>Status: {deposit.status}</Typography>
-                                            <Typography>Confirmed on: {new Date(deposit.created_at).toLocaleString()}</Typography>
+                                            <Typography>Image: {deposit.image_path}</Typography>
+                                            <Typography>Pending sent on: {new Date(deposit.created_at).toLocaleString()}</Typography>
                                         </CardContent>
                                     </Card>
                                 ))}
@@ -305,7 +306,7 @@ const AdminPanel = () => {
                                             <Typography>User ID: {withdrawal.user_id}</Typography>
                                             <Typography>Amount: ${withdrawal.amount}</Typography>
                                             <Typography>Status: {withdrawal.status}</Typography>
-                                            <Typography>Confirmed on: {new Date(withdrawal.created_at).toLocaleString()}</Typography>
+                                            <Typography>Pending sent on: {new Date(withdrawal.created_at).toLocaleString()}</Typography>
                                         </CardContent>
                                     </Card>
                                 ))}
