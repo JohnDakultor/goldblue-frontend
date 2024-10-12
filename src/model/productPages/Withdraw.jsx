@@ -224,8 +224,8 @@ const Withdraw = () => {
                         </Tooltip>
                     </Typography>
 
-                    <Typography variant="h6">Total Deposits: ${totalDeposits ? totalDeposits.toFixed(2) : '0.00'}</Typography>
-                    <Typography variant="h6">Withdrawable Interest: ${accumulation ? accumulation.toFixed(2) : '0.00'}</Typography>
+                    {/* <Typography variant="h6">Total Deposits: ${totalDeposits ? totalDeposits.toFixed(2) : '0.00'}</Typography>
+                    <Typography variant="h6">Withdrawable Interest: ${accumulation ? accumulation.toFixed(2) : '0.00'}</Typography> */}
 
                     <form onSubmit={handleSubmit}>
                         <FormControl fullWidth margin="normal">
