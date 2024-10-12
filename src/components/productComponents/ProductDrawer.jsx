@@ -25,7 +25,7 @@ import { Link } from "react-router-dom";
 import useLocalStorage from "use-local-storage";
 import axios from 'axios';
 
-import goldBlueLogo from '../../assets/goldblue.png';
+import goldBlueLogo from '../../assets/goldblue-icon.png';
 
 const drawerWidth = 240;
 

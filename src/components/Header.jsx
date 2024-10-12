@@ -10,7 +10,7 @@ import Button from "@mui/material/Button";
 import MenuItem from "@mui/material/MenuItem";
 import { Link } from "react-router-dom";
 import { useTranslation } from "react-i18next";
-import goldblueLogo from "../assets/goldblue.png";
+import goldblueLogo from "../assets/goldblue-icon.png";
 
 const pages = [
   { label: "aboutUs", path: "/about" },
