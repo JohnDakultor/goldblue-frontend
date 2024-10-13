@@ -292,8 +292,8 @@ const Deposit = () => {
                     </Typography>
 
                     {/* Dropdown for selecting payment method */}
-                    <FormControl fullWidth sx={{ mt: 2 }}>
-                        <InputLabel>Select Payment Method</InputLabel>
+                    <FormControl fullWidth sx={{ mt: 2, border: "1px solid var(--input-border-color)" }}>
+                        <InputLabel sx={{ color: "var(--primary-text-color)" }}>Select Payment Method</InputLabel>
                         <Select
                             value={selectedMethod}
                             onChange={(e) => setSelectedMethod(e.target.value)}
@@ -345,7 +345,7 @@ const Deposit = () => {
                         label="Enter Amount you have deposited"
                         variant="outlined"
                         fullWidth
-                        sx={{ mt: 3, color: "var(--primary-text-color)" }}
+                        sx={{ mt: 3, color: "var(--primary-text-color)", border: "1px solid var(--input-border-color)" }}
                         value={amount}
                         onChange={(e) => setAmount(e.target.value)}
                     />
