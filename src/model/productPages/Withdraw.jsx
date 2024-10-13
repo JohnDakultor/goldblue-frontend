@@ -127,7 +127,7 @@ const Withdraw = () => {
         if (currentDay === 0 || currentDay === 6) {
             setWithdrawalMessage("");
         } else {
-            setWithdrawalMessage("Unable to withdraw. Withdrawable days are Friday and Saturday.");
+            setWithdrawalMessage("Unable to withdraw. Withdrawable days are Saturday and Sunday.");
         }
     }, []);
     const handleSubmit = async (e) => {
@@ -146,7 +146,7 @@ const Withdraw = () => {
             return;
         }
     
-        if (parseFloat(amount) > accumulation) {
+        if (parseFloat(amount) > totalDeposits) {  //accumulation
             setErrorMessage("Amount exceeds your withdrawable balance.");
             setLoading(false);
             return;
@@ -224,8 +224,8 @@ const Withdraw = () => {
                         </Tooltip>
                     </Typography>
 
-                    {/* <Typography variant="h6">Total Deposits: ${totalDeposits ? totalDeposits.toFixed(2) : '0.00'}</Typography>
-                    <Typography variant="h6">Withdrawable Interest: ${accumulation ? accumulation.toFixed(2) : '0.00'}</Typography> */}
+                   <Typography variant="h6">Total Deposits: ${totalDeposits ? totalDeposits.toFixed(2) : '0.00'}</Typography>
+                    {/*  <Typography variant="h6">Withdrawable Interest: ${accumulation ? accumulation.toFixed(2) : '0.00'}</Typography> */}
 
                     <form onSubmit={handleSubmit}>
                         <FormControl fullWidth margin="normal">
