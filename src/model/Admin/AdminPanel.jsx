@@ -663,7 +663,7 @@ const AdminPanel = () => {
                                             <Typography>User ID: {deposit.user_id}</Typography>
                                             <Typography>Amount: ₱{deposit.amount}</Typography>
                                             <Typography>Status: {deposit.status}</Typography>
-                                            <Typography>Pending sent on: {new Date(deposit.created_at).toLocaleString()}</Typography>
+                                            <Typography>Requested on: {new Date(deposit.created_at).toLocaleString()}</Typography>
                                             <Button
                                                 variant="contained"
                                                 color="primary"
@@ -694,13 +694,13 @@ const AdminPanel = () => {
                                             <Typography>User ID: {withdrawal.user_id}</Typography>
                                             <Typography>Amount: ₱{withdrawal.amount}</Typography>
                                             <Typography>Status: {withdrawal.status}</Typography>
-                                            <Typography>Method used for withdrawal: {withdrawal.method}</Typography>
-                                            <Typography>Account: 
-                                                {withdrawal.withdrawal_method === 'trx' 
-                                                    ? withdrawal.wallet_key 
-                                                    : `${withdrawal.account_name} (Acc #: ${withdrawal.account_number})`}
+                                            <Typography>Method: {withdrawal.method}</Typography>
+                                            <Typography>Account: {withdrawal.method === 'trx'
+                                                ? withdrawal.wallet_key // Display wallet key for TRX
+                                                : `${withdrawal.account_name} (Acc #: ${withdrawal.account_number})` // Display account name and number for GCash or GOTYME
+                                            }
                                             </Typography>
-                                            <Typography>Confirmed on: {new Date(withdrawal.date).toLocaleString()}</Typography>
+                                            <Typography>Confirmed on: {new Date(withdrawal.updated_at).toLocaleString()}</Typography>
                                         </CardContent>
                                     </Card>
                                 ))}
@@ -723,10 +723,11 @@ const AdminPanel = () => {
                                             <Typography>User ID: {withdrawal.user_id}</Typography>
                                             <Typography>Amount: ₱{withdrawal.amount}</Typography>
                                             <Typography>Status: {withdrawal.status}</Typography>
-                                            <Typography>Account: 
-                                                {withdrawal.method === 'trx' 
-                                                    ? withdrawal.wallet_key 
-                                                    : `${withdrawal.account_name} (Acc #: ${withdrawal.account_number})`}
+                                            <Typography>Method: {withdrawal.method}</Typography>
+                                            <Typography>Account: {withdrawal.method === 'trx'
+                                                ? withdrawal.wallet_key // Display wallet key for TRX
+                                                : `${withdrawal.account_name} (Acc #: ${withdrawal.account_number})` // Display account name and number for GCash or GOTYME
+                                            }
                                             </Typography>
                                             <Typography>Requested on: {new Date(withdrawal.created_at).toLocaleString()}</Typography>
                                             <Button
@@ -745,18 +746,14 @@ const AdminPanel = () => {
                 </Grid>
             )}
 
+            {/* Modal for displaying images */}
             <Modal open={openModal} onClose={handleCloseModal}>
-                <Box sx={{ 
-                    display: 'flex', 
-                    justifyContent: 'center', 
-                    alignItems: 'center', 
-                    height: '100vh', 
-                    backgroundColor: 'rgba(0, 0, 0, 0.5)' 
-                }}>
-                    <img src={currentImage} alt="Deposit" style={{ maxWidth: '90%', maxHeight: '90%' }} />
+                <Box sx={{ display: 'flex', justifyContent: 'center', alignItems: 'center', height: '100vh' }}>
+                    <img src={currentImage} alt="Deposit" style={{ maxHeight: '90%', maxWidth: '90%' }} />
                 </Box>
             </Modal>
 
+            {/* Snackbar for notifications */}
             <Snackbar open={snackbarOpen} autoHideDuration={6000} onClose={handleSnackbarClose}>
                 <Alert onClose={handleSnackbarClose} severity={snackbarSeverity} sx={{ width: '100%' }}>
                     {snackbarMessage}
