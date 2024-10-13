@@ -761,7 +761,7 @@ const Withdraw = () => {
 
     useEffect(() => {
         const currentDay = new Date().getDay();
-        if (currentDay === 0 || currentDay === 6) {
+        if (currentDay === 1 || currentDay === 6) {
             setWithdrawalMessage("");
         } else {
             setWithdrawalMessage("Unable to withdraw. Withdrawable days are Saturday and Sunday.");
