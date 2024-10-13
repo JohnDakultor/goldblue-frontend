@@ -451,15 +451,7 @@ const Withdraw = () => {
     const [loading, setLoading] = useState(false);
     const [totalDeposits, setTotalDeposits] = useState(0);
     const [withdrawalMessage, setWithdrawalMessage] = useState("");
-    // const [accumulation, setAccumulation] = useState(() => {
-    //     // Initialize accumulation from local storage if available
-    //     return parseFloat(localStorage.getItem("accumulation")) || 0;
-    // });
-    // const [isAccumulationSent, setIsAccumulationSent] = useState(false);
-    // const [lastTotalDeposits, setLastTotalDeposits] = useState(() => {
-    //     return parseFloat(localStorage.getItem("lastTotalDeposits")) || 0;
-    // });
-
+    
     const baseUrl = 'https://gold-blue-backend-zk1834563cke-84ddfc10b917.herokuapp.com';
 
     useEffect(() => {
@@ -475,20 +467,6 @@ const Withdraw = () => {
                 }, 0);
 
                 setTotalDeposits(totalDeposited);
-
-                // Check the last processed total deposits from the server
-                // const lastProcessedTotalResponse = await axios.get(`${baseUrl}/api/lastProcessedTotal`, {
-                //     headers: { "x-access-token": localStorage.getItem("jwt") },
-                // });
-
-                // const lastProcessedTotal = lastProcessedTotalResponse.data.lastProcessedTotal;
-
-                // // Only send accumulation if the total deposited has changed
-                // if (totalDeposited !== lastProcessedTotal) {
-                //     await sendAccumulation(totalDeposited);
-                //     setLastTotalDeposits(totalDeposited); // Update last total deposits
-                //     localStorage.setItem("lastTotalDeposits", totalDeposited); // Store it in localStorage
-                // }
             } catch (error) {
                 console.error("Error fetching deposits:", error);
                 setErrorMessage("Error fetching deposits");
@@ -496,41 +474,7 @@ const Withdraw = () => {
         };
 
         fetchInitialData();
-        // fetchAccumulation(); // Fetch accumulation on mount
-
-        // Interval to fetch accumulated value every minute
-        // const interval = setInterval(() => {
-        //     fetchAccumulation();
-        // }, 24 * 60 * 60 * 1000); //60000 = 1 minute for testing
-
-        // return () => clearInterval(interval);
-    }, []); // Removed lastTotalDeposits as dependency
-
-    // const sendAccumulation = async (totalDeposits) => {
-    //     try {
-    //         await axios.post(`${baseUrl}/api/accumulation`, {
-    //             amount: totalDeposits,
-    //         }, {
-    //             headers: { "x-access-token": localStorage.getItem("jwt") },
-    //         });
-    //     } catch (error) {
-    //         console.error("Error sending accumulation:", error);
-    //         setErrorMessage("Error sending accumulation");
-    //     }
-    // };
-
-    // const fetchAccumulation = async () => {
-    //     try {
-    //         const response = await axios.get(`${baseUrl}/api/accumulation`, {
-    //             headers: { "x-access-token": localStorage.getItem("jwt") },
-    //         });
-    //         setAccumulation(response.data.accumulation);
-    //         localStorage.setItem("accumulation", response.data.accumulation); // Store in local storage
-    //     } catch (error) {
-    //         console.error("Error fetching accumulation:", error);
-    //         setErrorMessage("Error fetching accumulation");
-    //     }
-    // };
+    }, []);
 
     useEffect(() => {
         const currentDay = new Date().getDay();
@@ -557,14 +501,15 @@ const Withdraw = () => {
             return;
         }
 
-        // if (parseFloat(amount) > accumulation) {
-        //     setErrorMessage("Amount exceeds your withdrawable balance.");
-        //     setLoading(false);
-        //     return;
-        // }
+        // Check if the amount exceeds the total deposits
+        if (parseFloat(amount) > totalDeposits) {
+            setErrorMessage("Amount exceeds your total deposits.");
+            setLoading(false);
+            return;
+        }
 
         try {
-            // Step 1: Call the withdrawal API that updates the database
+            // Call the withdrawal API that updates the database
             const dbResponse = await axios.post(`${baseUrl}/api/withdraw`, {
                 method,
                 amount: parseFloat(amount),
@@ -576,28 +521,18 @@ const Withdraw = () => {
                 },
             });
 
-            // Immediately deduct from accumulation without waiting for dbResponse
-            // const accumulationResponse = await axios.post(`${baseUrl}/api/accumulation/withdraw`, {
-            //     amount: parseFloat(amount),
-            // }, {
-            //     headers: {
-            //         "x-access-token": localStorage.getItem("jwt"),
-            //     },
-            // });
-
             if (dbResponse.status === 200) {
                 setSuccessMessage("Withdrawal request submitted!");
+                
+                // Deduct the withdrawal amount from the total deposits
+                setTotalDeposits(prev => prev - parseFloat(amount));
+
                 setAmount("");
                 setAccountName("");
                 setAccountNumber("");
                 setWalletKey("");
                 setMethod("");
                 setSelectedCountry("");
-
-                // Update the accumulation value from the response
-                // const newAccumulation = accumulationResponse.data.newAccumulation;
-                // setAccumulation(newAccumulation);
-                // localStorage.setItem("accumulation", newAccumulation);
             } else {
                 setErrorMessage("Error processing withdrawal.");
             }
@@ -627,14 +562,12 @@ const Withdraw = () => {
                 <CardContent>
                     <Typography variant="h5" gutterBottom>
                         Withdraw Funds
-                        {/* Info icon with tooltip */}
                         <Tooltip title="Interest compound is 2% per day" arrow>
                             <InfoIcon sx={{ fontSize: 18, ml: 1, color: "gray", verticalAlign: "middle" }} />
                         </Tooltip>
                     </Typography>
 
                     <Typography variant="h6">Total Deposits: ${totalDeposits ? totalDeposits.toFixed(2) : '0.00'}</Typography>
-                    {/* <Typography variant="h6">Withdrawable Interest: ${accumulation ? accumulation.toFixed(2) : '0.00'}</Typography> */}
 
                     <form onSubmit={handleSubmit}>
                         <FormControl fullWidth margin="normal">
@@ -743,8 +676,7 @@ const Withdraw = () => {
                             color="primary"
                             fullWidth
                             sx={{ mt: 2 }}
-                            disabled={loading}
-                            isabled={loading || withdrawalMessage !== ""}
+                            disabled={loading || withdrawalMessage !== ""}
                         >
                             {loading ? "Processing..." : "Withdraw"}
                         </Button>
