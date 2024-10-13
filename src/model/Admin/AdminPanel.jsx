@@ -695,7 +695,7 @@ const AdminPanel = () => {
                                             <Typography>User ID: {withdrawal.user_id}</Typography>
                                             <Typography>Amount: ${withdrawal.amount}</Typography>
                                             <Typography>Status: {withdrawal.status}</Typography>
-                                            <Typography>Pending sent on: {new Date(withdrawal.created_at).toLocaleString()}</Typography>
+                                            <Typography>Pending sent on: {new Date(withdrawal.date).toLocaleString()}</Typography>
                                         </CardContent>
                                     </Card>
                                 ))}
@@ -719,7 +719,7 @@ const AdminPanel = () => {
                                             <Typography>User ID: {withdrawal.user_id}</Typography>
                                             <Typography>Amount: ${withdrawal.amount}</Typography>
                                             <Typography>Status: {withdrawal.status}</Typography>
-                                            <Typography>Pending sent on: {new Date(withdrawal.created_at).toLocaleString()}</Typography>
+                                            <Typography>Pending sent on: {new Date(withdrawal.date).toLocaleString()}</Typography>
                                             <Button
                                                 variant="contained"
                                                 color="primary"
