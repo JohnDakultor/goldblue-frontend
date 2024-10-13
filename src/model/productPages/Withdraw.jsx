@@ -450,6 +450,7 @@ const Withdraw = () => {
     const [successMessage, setSuccessMessage] = useState("");
     const [loading, setLoading] = useState(false);
     const [totalDeposits, setTotalDeposits] = useState(0);
+    const [withdrawalMessage, setWithdrawalMessage] = useState("");
     // const [accumulation, setAccumulation] = useState(() => {
     //     // Initialize accumulation from local storage if available
     //     return parseFloat(localStorage.getItem("accumulation")) || 0;
@@ -743,8 +744,9 @@ const Withdraw = () => {
                             fullWidth
                             sx={{ mt: 2 }}
                             disabled={loading}
+                            isabled={loading || withdrawalMessage !== ""}
                         >
-                            {loading ? "Processing..." : "Submit Withdrawal"}
+                            {loading ? "Processing..." : "Withdraw"}
                         </Button>
                     </form>
 
