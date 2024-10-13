@@ -700,7 +700,7 @@ const AdminPanel = () => {
                                                 : `${withdrawal.account_name} (Acc #: ${withdrawal.account_number})` // Display account name and number for GCash or GOTYME
                                             }
                                             </Typography>
-                                            <Typography>Confirmed on: {new Date(withdrawal.updated_at).toLocaleString()}</Typography>
+                                            <Typography>Confirmed on: {new Date(withdrawal.date).toLocaleString()}</Typography>
                                         </CardContent>
                                     </Card>
                                 ))}
@@ -729,7 +729,7 @@ const AdminPanel = () => {
                                                 : `${withdrawal.account_name} (Acc #: ${withdrawal.account_number})` // Display account name and number for GCash or GOTYME
                                             }
                                             </Typography>
-                                            <Typography>Requested on: {new Date(withdrawal.created_at).toLocaleString()}</Typography>
+                                            <Typography>Requested on: {new Date(withdrawal.date).toLocaleString()}</Typography>
                                             <Button
                                                 variant="contained"
                                                 color="primary"
