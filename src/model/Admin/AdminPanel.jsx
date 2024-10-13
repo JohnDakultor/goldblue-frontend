@@ -668,9 +668,8 @@ const AdminPanel = () => {
                                                 variant="contained"
                                                 color="primary"
                                                 onClick={() => handleConfirmDeposit(deposit.id)}
-                                                sx={{ mt: 1 }}
                                             >
-                                                Confirm
+                                                Confirm Deposit
                                             </Button>
                                         </CardContent>
                                     </Card>
@@ -694,12 +693,8 @@ const AdminPanel = () => {
                                             <Typography>User ID: {withdrawal.user_id}</Typography>
                                             <Typography>Amount: ₱{withdrawal.amount}</Typography>
                                             <Typography>Status: {withdrawal.status}</Typography>
-                                            <Typography>Account: 
-                                                {withdrawal.withdrawal_method === 'trx' 
-                                                    ? withdrawal.wallet_key 
-                                                    : `${withdrawal.account_name} (Acc #: ${withdrawal.account_number})`}
-                                            </Typography>
-                                            <Typography>Confirmed on: {new Date(withdrawal.updated_at).toLocaleString()}</Typography>
+                                            <Typography>Method: {withdrawal.method}</Typography>
+                                            <Typography>Pending sent on: {new Date(withdrawal.created_at).toLocaleString()}</Typography>
                                         </CardContent>
                                     </Card>
                                 ))}
@@ -722,19 +717,14 @@ const AdminPanel = () => {
                                             <Typography>User ID: {withdrawal.user_id}</Typography>
                                             <Typography>Amount: ₱{withdrawal.amount}</Typography>
                                             <Typography>Status: {withdrawal.status}</Typography>
-                                            <Typography>Account: 
-                                                {withdrawal.method === 'trx' 
-                                                    ? withdrawal.wallet_key 
-                                                    : `${withdrawal.account_name} (Acc #: ${withdrawal.account_number})`}
-                                            </Typography>
-                                            <Typography>Requested on: {new Date(withdrawal.created_at).toLocaleString()}</Typography>
+                                            <Typography>Method: {withdrawal.method}</Typography>
+                                            <Typography>Pending sent on: {new Date(withdrawal.created_at).toLocaleString()}</Typography>
                                             <Button
                                                 variant="contained"
                                                 color="primary"
                                                 onClick={() => handleConfirmWithdrawal(withdrawal.id)}
-                                                sx={{ mt: 1 }}
                                             >
-                                                Confirm
+                                                Confirm Withdrawal
                                             </Button>
                                         </CardContent>
                                     </Card>
@@ -744,20 +734,26 @@ const AdminPanel = () => {
                 </Grid>
             )}
 
+            {/* Image Modal */}
             <Modal open={openModal} onClose={handleCloseModal}>
                 <Box sx={{ 
                     display: 'flex', 
                     justifyContent: 'center', 
                     alignItems: 'center', 
-                    height: '100vh', 
-                    backgroundColor: 'rgba(0, 0, 0, 0.5)' 
+                    height: '100%', 
+                    bgcolor: 'rgba(0, 0, 0, 0.5)' 
                 }}>
-                    <img src={currentImage} alt="Deposit" style={{ maxWidth: '90%', maxHeight: '90%' }} />
+                    <img src={currentImage} alt="Deposit Slip" style={{ maxWidth: '90%', maxHeight: '90%' }} />
                 </Box>
             </Modal>
 
-            <Snackbar open={snackbarOpen} autoHideDuration={6000} onClose={handleSnackbarClose}>
-                <Alert onClose={handleSnackbarClose} severity={snackbarSeverity} sx={{ width: '100%' }}>
+            {/* Snackbar for Notifications */}
+            <Snackbar
+                open={snackbarOpen}
+                autoHideDuration={3000}
+                onClose={handleSnackbarClose}
+            >
+                <Alert onClose={handleSnackbarClose} severity={snackbarSeverity}>
                     {snackbarMessage}
                 </Alert>
             </Snackbar>
