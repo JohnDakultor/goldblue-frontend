@@ -184,62 +184,60 @@ export default function Deposit() {
     const getIcon = (severity) => {
         switch (severity) {
             case "success":
-                return <CheckCircle sx={{ color: '#4CAF50' }} />;
+                return <CheckCircle sx={{ color: 'var(--icon-color)', fontSize: 28 }} />;
             case "error":
-                return <Error sx={{ color: '#F44336' }} />;
+                return <Error sx={{ color: 'var(--icon-color)', fontSize: 28 }} />;
             case "info":
-                return <Info sx={{ color: '#2196F3' }} />;
+                return <Info sx={{ color: 'var(--icon-color)', fontSize: 28 }} />;
             default:
-                return <Info sx={{ color: '#2196F3' }} />;
+                return <Info sx={{ color: 'var(--icon-color)', fontSize: 28 }} />;
         }
     };
 
     return (
         <Box>
-            <AppBar position="static" sx={{ backgroundColor: '#212121', boxShadow: 'none' }}>
+            <AppBar position="static" sx={{ backgroundColor: 'var(--button-color)', boxShadow: 4 }}>
                 <Toolbar>
                     <ProductDrawer />
-                    <Typography variant="h6" sx={{ flexGrow: 1, color: '#FFFFFF' }}>
+                    <Typography variant="h6" sx={{ flexGrow: 1, color: 'var(--primary-text-color)', fontWeight: 600 }}>
                         Deposit
                     </Typography>
                 </Toolbar>
             </AppBar>
             <Toolbar />
-            <Box sx={{ padding: 3 }}>
-                <Typography variant="h5" gutterBottom sx={{ color: '#424242', fontWeight: 'bold' }}>
+            <Box sx={{ padding: 2 }}>
+                <Typography variant="h5" gutterBottom sx={{ color: 'var(--primary-text-color)', fontWeight: 500 }}>
                     Your Notifications
                 </Typography>
                 {notifications.length === 0 ? (
-                    <Typography sx={{ color: '#9E9E9E' }}>No new notifications</Typography>
+                    <Typography sx={{ color: 'var(--primary-text-color)', opacity: 0.7 }}>No new notifications</Typography>
                 ) : (
                     // Reverse the notifications array to display new notifications at the top
                     [...notifications].reverse().map((notification) => (
                         <Fade in key={notification.id} timeout={500}>
                             <Card sx={{
-                                marginBottom: 3,
+                                marginBottom: 2,
                                 display: 'flex',
                                 alignItems: 'center',
-                                boxShadow: '0px 4px 20px rgba(0, 0, 0, 0.1)',
-                                background: 'linear-gradient(135deg, #f5f5f5 30%, #eeeeee 100%)',
-                                borderRadius: '16px',
-                                padding: 2,
+                                boxShadow: 6,
+                                borderRadius: 3,  // Rounded corners
+                                backgroundColor: 'var(--card-background-color)',
+                                color: 'var(--primary-text-color)',
+                                transition: 'transform 0.3s ease-in-out',
                                 '&:hover': {
-                                    boxShadow: '0px 6px 30px rgba(0, 0, 0, 0.15)'
+                                    transform: 'translateY(-4px)',  // Hover effect for a modern feel
+                                    boxShadow: 12,
                                 }
                             }}>
-                                <Avatar sx={{
-                                    backgroundColor: '#FFF',
-                                    boxShadow: '0px 4px 10px rgba(0, 0, 0, 0.1)',
-                                    margin: 2
-                                }}>
+                                <Avatar sx={{ backgroundColor: 'var(--button-color)', margin: 2, width: 56, height: 56 }}>
                                     {getIcon(notification.severity)}
                                 </Avatar>
-                                <CardContent sx={{ flexGrow: 1 }}>
-                                    <Typography variant="body1" sx={{ fontWeight: '500', color: '#424242' }}>
+                                <CardContent sx={{ flex: 1 }}>
+                                    <Typography variant="body1" sx={{ fontWeight: 500, fontSize: '1.1rem' }}>
                                         {/* Replace dollar signs with peso signs */}
                                         {notification.message.replace(/\$/g, '₱')}
                                     </Typography>
-                                    <Typography variant="caption" sx={{ color: '#9E9E9E', marginTop: 1, display: 'block' }}>
+                                    <Typography variant="caption" sx={{ color: 'textSecondary', fontStyle: 'italic', marginTop: 1 }}>
                                         {new Date(notification.created_at).toLocaleString()}
                                     </Typography>
                                 </CardContent>
@@ -258,7 +256,12 @@ export default function Deposit() {
                     onClose={handleSnackbarClose}
                     severity={snackbarSeverity}
                     icon={getIcon(snackbarSeverity)}
-                    sx={{ backgroundColor: '#FFF', color: '#424242', boxShadow: '0px 4px 20px rgba(0, 0, 0, 0.1)', borderRadius: '8px' }}
+                    sx={{
+                        backgroundColor: 'var(--modal-color)',
+                        color: 'var(--primary-text-color)',
+                        boxShadow: 4,
+                        borderRadius: 2,
+                    }}
                 >
                     {snackbarMessage}
                 </Alert>
