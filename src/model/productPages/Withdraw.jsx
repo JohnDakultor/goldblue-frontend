@@ -523,10 +523,6 @@ const Withdraw = () => {
 
             if (dbResponse.status === 200) {
                 setSuccessMessage("Withdrawal request submitted!");
-                
-                // Deduct the withdrawal amount from the total deposits
-                setTotalDeposits(prev => prev - parseFloat(amount));
-
                 setAmount("");
                 setAccountName("");
                 setAccountNumber("");
@@ -562,6 +558,7 @@ const Withdraw = () => {
                 <CardContent>
                     <Typography variant="h5" gutterBottom>
                         Withdraw Funds
+                        {/* Info icon with tooltip */}
                         <Tooltip title="Interest compound is 2% per day" arrow>
                             <InfoIcon sx={{ fontSize: 18, ml: 1, color: "gray", verticalAlign: "middle" }} />
                         </Tooltip>
