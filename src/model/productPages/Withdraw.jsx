@@ -734,7 +734,7 @@ const Withdraw = () => {
     const [loading, setLoading] = useState(false);
     const [totalDeposits, setTotalDeposits] = useState(0);
     const [withdrawalMessage, setWithdrawalMessage] = useState("");
-    
+
     const baseUrl = 'https://gold-blue-backend-zk1834563cke-84ddfc10b917.herokuapp.com';
 
     useEffect(() => {
@@ -784,7 +784,6 @@ const Withdraw = () => {
             return;
         }
 
-        // Check if the amount exceeds the total deposits
         if (parseFloat(amount) > totalDeposits) {
             setErrorMessage("Amount exceeds your total deposits.");
             setLoading(false);
@@ -792,7 +791,6 @@ const Withdraw = () => {
         }
 
         try {
-            // Call the withdrawal API that updates the database
             const dbResponse = await axios.post(`${baseUrl}/api/withdraw`, {
                 method,
                 amount: parseFloat(amount),
@@ -840,13 +838,18 @@ const Withdraw = () => {
                 <CardContent>
                     <Typography variant="h5" gutterBottom>
                         Withdraw Funds
-                        {/* Info icon with tooltip */}
                         <Tooltip title="Interest compound is 2% per day" arrow>
                             <InfoIcon sx={{ fontSize: 18, ml: 1, color: "gray", verticalAlign: "middle" }} />
                         </Tooltip>
                     </Typography>
 
                     <Typography variant="h6">Total Deposits: ₱{totalDeposits ? totalDeposits.toFixed(2) : '0.00'}</Typography>
+
+                    {withdrawalMessage && (
+                        <Typography variant="body1" sx={{ color: "red", mt: 2 }}>
+                            {withdrawalMessage}
+                        </Typography>
+                    )}
 
                     <form onSubmit={handleSubmit}>
                         <FormControl fullWidth margin="normal">
@@ -882,6 +885,25 @@ const Withdraw = () => {
                                     fullWidth
                                     required
                                     margin="normal"
+                                    sx={{
+                                        '& .MuiOutlinedInput-root': {
+                                            '& input': {
+                                                color: 'var(--select-text-color)', // Text color for night mode
+                                            },
+                                            '& fieldset': {
+                                                borderColor: 'var(--input-border-color)', // Input border color
+                                            },
+                                            '&:hover fieldset': {
+                                                borderColor: 'var(--select-text-color)',
+                                            },
+                                            '&.Mui-focused fieldset': {
+                                                borderColor: 'var(--select-text-color)',
+                                            },
+                                        },
+                                        '& .MuiInputLabel-root': {
+                                            color: 'var(--select-text-color)', // Label color for night mode
+                                        },
+                                    }}
                                 />
                                 <TextField
                                     label="Account Number"
@@ -890,6 +912,25 @@ const Withdraw = () => {
                                     fullWidth
                                     required
                                     margin="normal"
+                                    sx={{
+                                        '& .MuiOutlinedInput-root': {
+                                            '& input': {
+                                                color: 'var(--select-text-color)', // Text color for night mode
+                                            },
+                                            '& fieldset': {
+                                                borderColor: 'var(--input-border-color)', // Input border color
+                                            },
+                                            '&:hover fieldset': {
+                                                borderColor: 'var(--select-text-color)',
+                                            },
+                                            '&.Mui-focused fieldset': {
+                                                borderColor: 'var(--select-text-color)',
+                                            },
+                                        },
+                                        '& .MuiInputLabel-root': {
+                                            color: 'var(--select-text-color)', // Label color for night mode
+                                        },
+                                    }}
                                 />
                             </>
                         )}
@@ -902,6 +943,25 @@ const Withdraw = () => {
                                 fullWidth
                                 required
                                 margin="normal"
+                                sx={{
+                                    '& .MuiOutlinedInput-root': {
+                                        '& input': {
+                                            color: 'var(--select-text-color)', // Text color for night mode
+                                        },
+                                        '& fieldset': {
+                                            borderColor: 'var(--input-border-color)', // Input border color
+                                        },
+                                        '&:hover fieldset': {
+                                            borderColor: 'var(--select-text-color)',
+                                        },
+                                        '&.Mui-focused fieldset': {
+                                            borderColor: 'var(--select-text-color)',
+                                        },
+                                    },
+                                    '& .MuiInputLabel-root': {
+                                        color: 'var(--select-text-color)', // Label color for night mode
+                                    },
+                                }}
                             />
                         )}
 
@@ -913,6 +973,25 @@ const Withdraw = () => {
                             fullWidth
                             required
                             margin="normal"
+                            sx={{
+                                '& .MuiOutlinedInput-root': {
+                                    '& input': {
+                                        color: 'var(--select-text-color)', // Text color for night mode
+                                    },
+                                    '& fieldset': {
+                                        borderColor: 'var(--input-border-color)', // Input border color
+                                    },
+                                    '&:hover fieldset': {
+                                        borderColor: 'var(--select-text-color)',
+                                    },
+                                    '&.Mui-focused fieldset': {
+                                        borderColor: 'var(--select-text-color)',
+                                    },
+                                },
+                                '& .MuiInputLabel-root': {
+                                    color: 'var(--select-text-color)', // Label color for night mode
+                                },
+                            }}
                         />
 
                         <Button
