@@ -463,7 +463,7 @@ const AdminPanel = () => {
             if (response.status === 200) {
                 await Axios.post(`${baseUrl}/api/notifications`, {
                     user_id: response.data.user_id,
-                    message: `Your deposit of $${response.data.amount} has been confirmed.`,
+                    message: `Your deposit of ₱${response.data.amount} has been confirmed.`,
                     headers: { "x-access-token": token }
                 });
 
@@ -490,7 +490,7 @@ const AdminPanel = () => {
             if (response.status === 200) {
                 await Axios.post(`${baseUrl}/api/notifications`, {
                     user_id: response.data.user_id,
-                    message: `Your withdrawal of $${response.data.amount} has been confirmed.`,
+                    message: `Your withdrawal of ₱${response.data.amount} has been confirmed.`,
                 });
 
                 setSnackbarMessage("Notification sent to user!");
