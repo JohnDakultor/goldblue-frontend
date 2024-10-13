@@ -105,7 +105,7 @@ const Dashboard = () => {
                     >
                       <SavingsIcon color="primary" /> {/* Icon for deposits */}
                       <Typography variant="body2" sx={{ marginLeft: "8px" }}>
-                        Deposit: ${transaction.amount} on {new Date(transaction.created_at).toLocaleDateString()} {/* Label for deposits with date */}
+                        Deposit: ₱{transaction.amount} on {new Date(transaction.created_at).toLocaleDateString()} {/* Label for deposits with date */}
                       </Typography>
                     </Box>
                   ))
@@ -134,7 +134,7 @@ const Dashboard = () => {
                     >
                       <LocalAtmIcon color="error" /> {/* Icon for withdrawals */}
                       <Typography variant="body2" sx={{ marginLeft: "8px" }}>
-                        Withdrawal: ${transaction.amount} on {new Date(transaction.date).toLocaleDateString()} {/* Label for withdrawals with date */}
+                        Withdrawal: ₱{transaction.amount} on {new Date(transaction.date).toLocaleDateString()} {/* Label for withdrawals with date */}
                       </Typography>
                     </Box>
                   ))

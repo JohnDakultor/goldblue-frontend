@@ -639,7 +639,7 @@ const AdminPanel = () => {
                                                 Deposit ID: {deposit.id}
                                             </Typography>
                                             <Typography>User ID: {deposit.user_id}</Typography>
-                                            <Typography>Amount: ${deposit.amount}</Typography>
+                                            <Typography>Amount: ₱{deposit.amount}</Typography>
                                             <Typography>Status: {deposit.status}</Typography>
                                             <Typography>Pending sent on: {new Date(deposit.created_at).toLocaleString()}</Typography>
                                         </CardContent>
@@ -663,7 +663,7 @@ const AdminPanel = () => {
                                                 Deposit ID: {deposit.id}
                                             </Typography>
                                             <Typography>User ID: {deposit.user_id}</Typography>
-                                            <Typography>Amount: ${deposit.amount}</Typography>
+                                            <Typography>Amount: ₱{deposit.amount}</Typography>
                                             <Typography>Status: {deposit.status}</Typography>
                                             <Typography>Pending sent on: {new Date(deposit.created_at).toLocaleString()}</Typography>
                                             <Button
@@ -693,7 +693,7 @@ const AdminPanel = () => {
                                                 Withdrawal ID: {withdrawal.id}
                                             </Typography>
                                             <Typography>User ID: {withdrawal.user_id}</Typography>
-                                            <Typography>Amount: ${withdrawal.amount}</Typography>
+                                            <Typography>Amount: ₱{withdrawal.amount}</Typography>
                                             <Typography>Status: {withdrawal.status}</Typography>
                                             <Typography>Pending sent on: {new Date(withdrawal.date).toLocaleString()}</Typography>
                                         </CardContent>
@@ -717,7 +717,7 @@ const AdminPanel = () => {
                                                 Withdrawal ID: {withdrawal.id}
                                             </Typography>
                                             <Typography>User ID: {withdrawal.user_id}</Typography>
-                                            <Typography>Amount: ${withdrawal.amount}</Typography>
+                                            <Typography>Amount: ₱{withdrawal.amount}</Typography>
                                             <Typography>Status: {withdrawal.status}</Typography>
                                             <Typography>Pending sent on: {new Date(withdrawal.date).toLocaleString()}</Typography>
                                             <Button
