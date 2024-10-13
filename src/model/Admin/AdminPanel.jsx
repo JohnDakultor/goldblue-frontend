@@ -419,10 +419,12 @@ const AdminPanel = () => {
     const [snackbarMessage, setSnackbarMessage] = useState("");
     const [snackbarSeverity, setSnackbarSeverity] = useState("success");
 
-    const baseUrl = 'https://gold-blue-backend-zk1834564563cke-84ddfc10b917.herokuapp.com';
+    const baseUrl = 'https://gold-blue-backend-zk1834563cke-84ddfc10b917.herokuapp.com';
+
     const BASE_URL = `${baseUrl}/`;
     const token = localStorage.getItem("jwt");
     const navigate = useNavigate(); 
+
     const auth = useAuth();
 
     useEffect(() => {
@@ -625,12 +627,12 @@ const AdminPanel = () => {
                 <Grid container spacing={4}>
                     <Grid item xs={12} md={6}>
                         <Typography variant="h5" gutterBottom>
-                            Deposits
+                            Confirmed Deposits
                         </Typography>
                         <Box sx={{ maxHeight: 400, overflowY: "auto" }}>
                             {deposits
-                                .filter(deposit => deposit.status === "pending")
-                                .map(deposit => (
+                                .filter((deposit) => deposit.status === "confirmed")
+                                .map((deposit) => (
                                     <Card elevation={4} key={deposit.id} sx={{ mb: 2 }}>
                                         <CardContent>
                                             <Typography variant="h6" fontWeight="bold">
@@ -639,47 +641,37 @@ const AdminPanel = () => {
                                             <Typography>User ID: {deposit.user_id}</Typography>
                                             <Typography>Amount: ${deposit.amount}</Typography>
                                             <Typography>Status: {deposit.status}</Typography>
-                                            <Typography>
-                                                Pending sent on: {new Date(deposit.created_at).toLocaleString()}
+                                            <Typography>Pending sent on: {new Date(deposit.created_at).toLocaleString()}</Typography>
+                                        </CardContent>
+                                    </Card>
+                                ))}
+                        </Box>
+                    </Grid>
+
+                    <Grid item xs={12} md={6}>
+                        <Typography variant="h5" gutterBottom>
+                            Pending Deposits
+                        </Typography>
+                        <Box sx={{ maxHeight: 400, overflowY: "auto" }}>
+                            {deposits
+                                .filter((deposit) => deposit.status === "pending")
+                                .sort((a, b) => new Date(b.created_at) - new Date(a.created_at)) // Sort by created_at descending
+                                .map((deposit) => (
+                                    <Card elevation={4} key={deposit.id} sx={{ mb: 2 }}>
+                                        <CardContent>
+                                            <Typography variant="h6" fontWeight="bold">
+                                                Deposit ID: {deposit.id}
                                             </Typography>
+                                            <Typography>User ID: {deposit.user_id}</Typography>
+                                            <Typography>Amount: ${deposit.amount}</Typography>
+                                            <Typography>Status: {deposit.status}</Typography>
+                                            <Typography>Pending sent on: {new Date(deposit.created_at).toLocaleString()}</Typography>
                                             <Button
                                                 variant="contained"
                                                 color="primary"
                                                 onClick={() => handleConfirmDeposit(deposit.id)}
-                                                sx={{ mt: 2 }}
                                             >
                                                 Confirm Deposit
-                                            </Button>
-                                            <Button
-                                                variant="outlined"
-                                                onClick={() => handleImageClick(deposit.image)}
-                                                sx={{ mt: 2, ml: 2 }}
-                                            >
-                                                View Image
-                                            </Button>
-                                        </CardContent>
-                                    </Card>
-                                ))}
-                            {deposits
-                                .filter(deposit => deposit.status === "confirmed")
-                                .map(deposit => (
-                                    <Card elevation={4} key={deposit.id} sx={{ mb: 2 }}>
-                                        <CardContent>
-                                            <Typography variant="h6" fontWeight="bold">
-                                                Deposit ID: {deposit.id}
-                                            </Typography>
-                                            <Typography>User ID: {deposit.user_id}</Typography>
-                                            <Typography>Amount: ${deposit.amount}</Typography>
-                                            <Typography>Status: {deposit.status}</Typography>
-                                            <Typography>
-                                                Confirmed on: {new Date(deposit.updated_at).toLocaleString()}
-                                            </Typography>
-                                            <Button
-                                                variant="outlined"
-                                                onClick={() => handleImageClick(deposit.image)}
-                                                sx={{ mt: 2 }}
-                                            >
-                                                View Image
                                             </Button>
                                         </CardContent>
                                     </Card>
@@ -689,12 +681,12 @@ const AdminPanel = () => {
 
                     <Grid item xs={12} md={6}>
                         <Typography variant="h5" gutterBottom>
-                            Withdrawals
+                            Confirmed Withdrawals
                         </Typography>
                         <Box sx={{ maxHeight: 400, overflowY: "auto" }}>
                             {withdrawals
-                                .filter(withdrawal => withdrawal.status === "pending")
-                                .map(withdrawal => (
+                                .filter((withdrawal) => withdrawal.status === "confirmed")
+                                .map((withdrawal) => (
                                     <Card elevation={4} key={withdrawal.id} sx={{ mb: 2 }}>
                                         <CardContent>
                                             <Typography variant="h6" fontWeight="bold">
@@ -703,34 +695,38 @@ const AdminPanel = () => {
                                             <Typography>User ID: {withdrawal.user_id}</Typography>
                                             <Typography>Amount: ${withdrawal.amount}</Typography>
                                             <Typography>Status: {withdrawal.status}</Typography>
-                                            <Typography>
-                                                Pending sent on: {new Date(withdrawal.created_at).toLocaleString()}
+                                            <Typography>Pending sent on: {new Date(withdrawal.created_at).toLocaleString()}</Typography>
+                                        </CardContent>
+                                    </Card>
+                                ))}
+                        </Box>
+                    </Grid>
+
+                    <Grid item xs={12} md={6}>
+                        <Typography variant="h5" gutterBottom>
+                            Pending Withdrawals
+                        </Typography>
+                        <Box sx={{ maxHeight: 400, overflowY: "auto" }}>
+                            {withdrawals
+                                .filter((withdrawal) => withdrawal.status === "pending")
+                                .sort((a, b) => new Date(b.created_at) - new Date(a.created_at)) // Sort by created_at descending
+                                .map((withdrawal) => (
+                                    <Card elevation={4} key={withdrawal.id} sx={{ mb: 2 }}>
+                                        <CardContent>
+                                            <Typography variant="h6" fontWeight="bold">
+                                                Withdrawal ID: {withdrawal.id}
                                             </Typography>
+                                            <Typography>User ID: {withdrawal.user_id}</Typography>
+                                            <Typography>Amount: ${withdrawal.amount}</Typography>
+                                            <Typography>Status: {withdrawal.status}</Typography>
+                                            <Typography>Pending sent on: {new Date(withdrawal.created_at).toLocaleString()}</Typography>
                                             <Button
                                                 variant="contained"
                                                 color="primary"
                                                 onClick={() => handleConfirmWithdrawal(withdrawal.id)}
-                                                sx={{ mt: 2 }}
                                             >
                                                 Confirm Withdrawal
                                             </Button>
-                                        </CardContent>
-                                    </Card>
-                                ))}
-                            {withdrawals
-                                .filter(withdrawal => withdrawal.status === "confirmed")
-                                .map(withdrawal => (
-                                    <Card elevation={4} key={withdrawal.id} sx={{ mb: 2 }}>
-                                        <CardContent>
-                                            <Typography variant="h6" fontWeight="bold">
-                                                Withdrawal ID: {withdrawal.id}
-                                            </Typography>
-                                            <Typography>User ID: {withdrawal.user_id}</Typography>
-                                            <Typography>Amount: ${withdrawal.amount}</Typography>
-                                            <Typography>Status: {withdrawal.status}</Typography>
-                                            <Typography>
-                                                Confirmed on: {new Date(withdrawal.updated_at).toLocaleString()}
-                                            </Typography>
                                         </CardContent>
                                     </Card>
                                 ))}
@@ -742,18 +738,21 @@ const AdminPanel = () => {
             {/* Image Modal */}
             <Modal open={openModal} onClose={handleCloseModal}>
                 <Box sx={{ 
-                    display: 'flex', 
-                    alignItems: 'center', 
-                    justifyContent: 'center', 
-                    height: '100vh' 
+                    position: 'absolute', 
+                    top: '50%', 
+                    left: '50%', 
+                    transform: 'translate(-50%, -50%)', 
+                    bgcolor: 'background.paper', 
+                    boxShadow: 24, 
+                    p: 4 
                 }}>
-                    <img src={currentImage} alt="Deposit" style={{ maxWidth: '90%', maxHeight: '90%' }} />
+                    <img src={currentImage} alt="Deposit" style={{ width: '100%', height: 'auto' }} />
                 </Box>
             </Modal>
 
-            {/* Snackbar for Notifications */}
+            {/* Snackbar for notifications */}
             <Snackbar open={snackbarOpen} autoHideDuration={6000} onClose={handleSnackbarClose}>
-                <Alert onClose={handleSnackbarClose} severity={snackbarSeverity} sx={{ width: '100%' }}>
+                <Alert onClose={handleSnackbarClose} severity={snackbarSeverity}>
                     {snackbarMessage}
                 </Alert>
             </Snackbar>
