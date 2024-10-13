@@ -448,6 +448,8 @@ const AdminPanel = () => {
         return () => clearInterval(intervalId); 
     }, []);
 
+    //adapted from https://mui.com/material-ui/react-snackbar/
+
     const handleLogout = async() => {
         try {
             await auth.logout();
