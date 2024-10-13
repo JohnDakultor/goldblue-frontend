@@ -279,7 +279,7 @@ const AdminPanel = () => {
                                             <Typography>
                                             Image: 
                                             <Button 
-                                                onClick={() => handleImageClick(deposit.image_path)} 
+                                                onClick={() => handleImageClick(`sftp://5c9ae6570494054389f53e4acdc56a@sparkling-water-50295.sftptogo.com/browser${deposit.image_path}`)} 
                                                 sx={{ ml: 1, textDecoration: 'underline' }}
                                             >
                                                 View Image
