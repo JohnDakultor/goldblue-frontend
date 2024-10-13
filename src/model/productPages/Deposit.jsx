@@ -292,12 +292,13 @@ const Deposit = () => {
                     </Typography>
 
                     {/* Dropdown for selecting payment method */}
-                    <FormControl fullWidth sx={{ mt: 2, border: "1px solid var(--input-border-color)", color: "var(--select-text-color)" }}>
+                    <FormControl fullWidth sx={{ mt: 2, border: "solid var(--input-border-color)" }}>
                         <InputLabel sx={{ color: "var(--primary-text-color)" }}>Select Payment Method</InputLabel>
                         <Select
                             value={selectedMethod}
                             onChange={(e) => setSelectedMethod(e.target.value)}
                             label="Select Payment Method"
+                            sx={{ color: "var(--select-text-color)" }}
                         >
                             <MenuItem value="gcash">GCash</MenuItem>
                             <MenuItem value="gotyme">GoTyme</MenuItem>
@@ -313,7 +314,7 @@ const Deposit = () => {
                         sx={{
                             mt: 2,
                             p: 2,
-                            border: "1px solid var(--input-border-color)",
+                            border: "solid var(--input-border-color)",
                             borderRadius: "8px",
                             wordBreak: "break-all",
                             textAlign: "center",
@@ -326,7 +327,7 @@ const Deposit = () => {
 
                         {/* Copy Icon */}
                         <Tooltip title={copied ? "Copied!" : "Copy to clipboard"}>
-                            <IconButton onClick={handleCopyAddress} sx={{ ml: 1, color: "var(--icon-color)" }}>
+                            <IconButton onClick={handleCopyAddress} sx={{ ml: 1, color: "var(--select-text-color)" }}>
                                 <ContentCopyIcon />
                             </IconButton>
                         </Tooltip>
@@ -343,10 +344,24 @@ const Deposit = () => {
                     {/* Deposit Amount */}
                     <TextField
                         label="Enter Amount you have deposited"
-                        
                         variant="outlined"
                         fullWidth
-                        sx={{ mt: 3, color: "var(--select-text-color)", border: "1px solid var(--input-border-color)" }}
+                        sx={{ 
+                            mt: 3, 
+                            color: "var(--select-text-color)", 
+                            border: "1px solid var(--input-border-color)", 
+                            '& .MuiOutlinedInput-root': {
+                                '& fieldset': {
+                                    borderColor: 'var(--input-border-color)',
+                                },
+                                '&:hover fieldset': {
+                                    borderColor: 'var(--select-text-color)',
+                                },
+                                '&.Mui-focused fieldset': {
+                                    borderColor: 'var(--select-text-color)',
+                                },
+                            }
+                        }}
                         value={amount}
                         onChange={(e) => setAmount(e.target.value)}
                     />
@@ -393,4 +408,3 @@ const Deposit = () => {
 };
 
 export default withUserData(Deposit);
-
