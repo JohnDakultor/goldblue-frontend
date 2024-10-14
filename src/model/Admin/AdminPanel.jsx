@@ -802,20 +802,26 @@ const AdminPanel = () => {
 
       {/* Modal for displaying images */}
       <Modal open={openModal} onClose={handleCloseModal}>
-        <Box
-          sx={{
-            display: "flex",
-            justifyContent: "center",
-            alignItems: "center",
-            height: "100vh",
-          }}
-        >
-          <img
-            src={currentImage}
-            alt="Deposit"
-            style={{ maxHeight: "90%", maxWidth: "90%" }}
-          />
-        </Box>
+         <Box
+           sx={{
+          position: "absolute",
+           top: "50%",
+           left: "50%",
+          transform: "translate(-50%, -50%)",
+           bgcolor: "background.paper",
+           boxShadow: 24,
+            p: 4,
+            maxHeight: "90vh",
+            maxWidth: "90vw",
+             overflowY: "auto",
+           }}
+         >
+           <img
+             src={currentImage}
+            alt="Deposit Proof"
+         style={{ maxWidth: "100%", maxHeight: "100%" }}
+           />
+         </Box>
       </Modal>
 
       {/* Snackbar for notifications */}
