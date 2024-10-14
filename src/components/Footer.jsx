@@ -8,7 +8,7 @@ import { Typography, Link } from "@mui/material";
 import { useTranslation } from "react-i18next";
 
 export default function Footer() {
-  const year = new Date().getFullYear();
+  const year = "2022";//new Date().getFullYear();
   const { t, i18n } = useTranslation();
   const languages = [
     { code: "en", name: "English" },
