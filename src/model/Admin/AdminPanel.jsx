@@ -1212,15 +1212,27 @@ const AdminPanel = () => {
 
       {/* Image Modal */}
       <Modal open={openModal} onClose={handleCloseModal}>
-  <Box sx={{ ...modalStyle }}>
-    {currentImage ? (
-      <img src={currentImage} alt="Deposit" style={{ maxWidth: "100%" }} />
-    ) : (
-      <CircularProgress />
-    )}
-  </Box>
-</Modal>
-
+        <Box
+          sx={{
+            position: "absolute",
+            top: "50%",
+            left: "50%",
+            transform: "translate(-50%, -50%)",
+            bgcolor: "background.paper",
+            boxShadow: 24,
+            p: 4,
+            maxHeight: "90vh",
+            maxWidth: "90vw",
+            overflowY: "auto",
+          }}
+        >
+          <img
+            src={currentImage}
+            alt="Deposit Proof"
+            style={{ maxWidth: "100%", maxHeight: "100%" }}
+          />
+        </Box>
+      </Modal>
 
       {/* Snackbar */}
       <Snackbar
