@@ -58,14 +58,6 @@ export default function Footer() {
             </Typography>
             <Typography variant="body2" color="textSecondary" align="center">
               {t('followUs')}:{" "}
-              <Link color="inherit" href="https://facebook.com">
-                Facebook
-              </Link>{" "}
-              |
-              <Link color="inherit" href="https://twitter.com">
-                Twitter
-              </Link>{" "}
-              |
               <Link color="inherit" href="https://instagram.com">
                 Instagram
               </Link>

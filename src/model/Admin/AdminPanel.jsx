@@ -418,9 +418,7 @@ const AdminPanel = () => {
   const [snackbarMessage, setSnackbarMessage] = useState("");
   const [snackbarSeverity, setSnackbarSeverity] = useState("success");
 
-  const baseUrl =
-    "https://gold-blue-backend-zk1834563cke-84ddfc10b917.herokuapp.com";
-  const BASE_URL = `${baseUrl}/`;
+  const baseUrl = "https://gold-blue-backend-zk1834563cke-84ddfc10b917.herokuapp.com"; // Backend URL
   const token = localStorage.getItem("jwt");
   const navigate = useNavigate();
 
@@ -514,8 +512,9 @@ const AdminPanel = () => {
     }
   };
 
+  // Function to fetch and display the image in modal
   const handleImageClick = (imagePath) => {
-    const fullImagePath = `${BASE_URL}${imagePath.replace(/\\/g, "/")}`;
+    const fullImagePath = `${baseUrl}/api/images/${imagePath}`;
     setCurrentImage(fullImagePath);
     setOpenModal(true);
   };
@@ -629,7 +628,7 @@ const AdminPanel = () => {
               <Typography variant="h6" fontWeight="bold">
                 Pending Withdrawals
               </Typography>
-              <Typography variant="h4" color="error">
+              <Typography variant="h4" color="red">
                 {totalPendingWithdrawals}
               </Typography>
             </CardContent>
@@ -637,162 +636,79 @@ const AdminPanel = () => {
         </Grid>
       </Grid>
 
-      {loading ? (
-        <CircularProgress />
-      ) : error ? (
-        <Typography color="error">{error}</Typography>
-      ) : (
-        <Grid container spacing={4}>
-          <Grid item xs={12} md={6}>
-            <Typography variant="h5" gutterBottom>
-              Confirmed Deposits
-            </Typography>
-            <Box sx={{ maxHeight: 400, overflowY: "auto" }}>
-              {deposits
-                .filter((deposit) => deposit.status === "confirmed")
-                .map((deposit) => (
-                  <Card elevation={4} key={deposit.id} sx={{ mb: 2 }}>
-                    <CardContent>
-                      <Typography variant="h6" fontWeight="bold">
-                        Deposit ID: {deposit.id}
-                      </Typography>
-                      <Typography>User ID: {deposit.user_id}</Typography>
-                      <Typography>Amount: ₱{deposit.amount}</Typography>
-                      <Typography>Status: {deposit.status}</Typography>
-                      <Typography>
-                        Pending sent on:{" "}
-                        {new Date(deposit.created_at).toLocaleString()}
-                      </Typography>
-                    </CardContent>
-                  </Card>
-                ))}
-            </Box>
-          </Grid>
+      {/* Deposits and Withdrawals */}
+      <Grid container spacing={4}>
+        <Grid item xs={12} md={6}>
+          <Card>
+            <CardContent>
+              <Typography variant="h6" fontWeight="bold">
+                Deposits
+              </Typography>
+              {loading ? (
+                <CircularProgress />
+              ) : error ? (
+                <Typography color="error">{error}</Typography>
+              ) : (
+                deposits.map((deposit) => (
+                  <Box key={deposit.id} sx={{ mb: 2 }}>
+                    <Typography>
+                      {deposit.user_id} deposited ₱{deposit.amount}
+                    </Typography>
+                    <Button
+                      onClick={() => handleConfirmDeposit(deposit.id)}
+                      disabled={deposit.status === "confirmed"}
+                    >
+                      {deposit.status === "confirmed"
+                        ? "Confirmed"
+                        : "Confirm"}
+                    </Button>
 
-          <Grid item xs={12} md={6}>
-            <Typography variant="h5" gutterBottom>
-              Pending Deposits
-            </Typography>
-            <Box sx={{ maxHeight: 400, overflowY: "auto" }}>
-              {deposits
-                .filter((deposit) => deposit.status === "pending")
-                .map((deposit) => (
-                  <Card elevation={4} key={deposit.id} sx={{ mb: 2 }}>
-                    <CardContent>
-                      <Typography variant="h6" fontWeight="bold">
-                        Deposit ID: {deposit.id}
-                      </Typography>
-                      <Typography>User ID: {deposit.user_id}</Typography>
-                      <Typography>Amount: ₱{deposit.amount}</Typography>
-                      <Typography>Status: {deposit.status}</Typography>
-                      <Typography>
-                        Requested on:{" "}
-                        {new Date(deposit.created_at).toLocaleString()}
-                      </Typography>
-                      <Button
-                        variant="contained"
-                        color="primary"
-                        onClick={() => handleConfirmDeposit(deposit.id)}
-                        sx={{ mt: 1 }}
-                      >
-                        Confirm
-                      </Button>
-                    </CardContent>
-                  </Card>
-                ))}
-            </Box>
-          </Grid>
-
-          <Grid item xs={12} md={6}>
-            <Typography variant="h5" gutterBottom>
-              Confirmed Withdrawals
-            </Typography>
-            <Box sx={{ maxHeight: 400, overflowY: "auto" }}>
-              {withdrawals
-                .filter((withdrawal) => withdrawal.status === "confirmed")
-                .map((withdrawal) => (
-                  <Card elevation={4} key={withdrawal.id} sx={{ mb: 2 }}>
-                    <CardContent>
-                      <Typography variant="h6" fontWeight="bold">
-                        Withdrawal ID: {withdrawal.id}
-                      </Typography>
-                      <Typography>User ID: {withdrawal.user_id}</Typography>
-                      <Typography>Amount: ₱{withdrawal.amount}</Typography>
-                      <Typography>Status: {withdrawal.status}</Typography>
-                      <Typography>Method: {withdrawal.method}</Typography>
-                      <Typography>
-                        Account:{" "}
-                        {
-                          withdrawal.method === "trx"
-                            ? withdrawal.wallet_key // Display wallet key for TRX
-                            : `${withdrawal.account_name} (Acc #: ${withdrawal.account_number})` // Display account name and number for GCash or GOTYME
-                        }
-                      </Typography>
-                      <Typography>
-                        Requested on:{" "}
-                        {withdrawal.date
-                          ? new Date(
-                              withdrawal.date.replace(" ", "T")
-                            ).toLocaleString()
-                          : "N/A"}
-                      </Typography>
-                    </CardContent>
-                  </Card>
-                ))}
-            </Box>
-          </Grid>
-
-          <Grid item xs={12} md={6}>
-            <Typography variant="h5" gutterBottom>
-              Pending Withdrawals
-            </Typography>
-            <Box sx={{ maxHeight: 400, overflowY: "auto" }}>
-              {withdrawals
-                .filter((withdrawal) => withdrawal.status === "pending")
-                .map((withdrawal) => (
-                  <Card elevation={4} key={withdrawal.id} sx={{ mb: 2 }}>
-                    <CardContent>
-                      <Typography variant="h6" fontWeight="bold">
-                        Withdrawal ID: {withdrawal.id}
-                      </Typography>
-                      <Typography>User ID: {withdrawal.user_id}</Typography>
-                      <Typography>Amount: ₱{withdrawal.amount}</Typography>
-                      <Typography>Status: {withdrawal.status}</Typography>
-                      <Typography>Method: {withdrawal.method}</Typography>
-                      <Typography>
-                        Account:{" "}
-                        {
-                          withdrawal.method === "trx"
-                            ? withdrawal.wallet_key // Display wallet key for TRX
-                            : `${withdrawal.account_name} (Acc #: ${withdrawal.account_number})` // Display account name and number for GCash or GOTYME
-                        }
-                      </Typography>
-                      <Typography>
-                        Requested on:{" "}
-                        {withdrawal.date
-                          ? new Date(
-                              withdrawal.date.replace(" ", "T")
-                            ).toLocaleString()
-                          : "N/A"}
-                      </Typography>
-
-                      <Button
-                        variant="contained"
-                        color="primary"
-                        onClick={() => handleConfirmWithdrawal(withdrawal.id)}
-                        sx={{ mt: 1 }}
-                      >
-                        Confirm
-                      </Button>
-                    </CardContent>
-                  </Card>
-                ))}
-            </Box>
-          </Grid>
+                    <Button
+                      onClick={() => handleImageClick(deposit.image_path)} // Fetch and show image in modal
+                      sx={{ ml: 2 }}
+                    >
+                      View Image
+                    </Button>
+                  </Box>
+                ))
+              )}
+            </CardContent>
+          </Card>
         </Grid>
-      )}
 
-      {/* Modal for displaying images */}
+        <Grid item xs={12} md={6}>
+          <Card>
+            <CardContent>
+              <Typography variant="h6" fontWeight="bold">
+                Withdrawals
+              </Typography>
+              {loading ? (
+                <CircularProgress />
+              ) : error ? (
+                <Typography color="error">{error}</Typography>
+              ) : (
+                withdrawals.map((withdrawal) => (
+                  <Box key={withdrawal.id} sx={{ mb: 2 }}>
+                    <Typography>
+                      {withdrawal.user_id} withdrew ₱{withdrawal.amount}
+                    </Typography>
+                    <Button
+                      onClick={() => handleConfirmWithdrawal(withdrawal.id)}
+                      disabled={withdrawal.status === "confirmed"}
+                    >
+                      {withdrawal.status === "confirmed"
+                        ? "Confirmed"
+                        : "Confirm"}
+                    </Button>
+                  </Box>
+                ))
+              )}
+            </CardContent>
+          </Card>
+        </Grid>
+      </Grid>
+
+      {/* Image Modal */}
       <Modal open={openModal} onClose={handleCloseModal}>
         <Box
           sx={{
@@ -810,7 +726,7 @@ const AdminPanel = () => {
         </Box>
       </Modal>
 
-      {/* Snackbar for notifications */}
+      {/* Snackbar */}
       <Snackbar
         open={snackbarOpen}
         autoHideDuration={6000}

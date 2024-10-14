@@ -24,29 +24,11 @@ export default function Contact() {
                         <Button
                             variant="contained"
                             color="primary"
-                            href="https://www.facebook.com/yourpage"
-                            target="_blank"
-                            sx={{ mx: 1 }}
-                        >
-                            Facebook
-                        </Button>
-                        <Button
-                            variant="contained"
-                            color="primary"
-                            href="mailto:youremail@gmail.com"
+                            href="mailto:goldbluecorpsol@gmail.com"
                             target="_blank"
                             sx={{ mx: 1 }}
                         >
                             Email
-                        </Button>
-                        <Button
-                            variant="contained"
-                            color="primary"
-                            href="https://twitter.com/yourhandle"
-                            target="_blank"
-                            sx={{ mx: 1 }}
-                        >
-                            Twitter
                         </Button>
                         <Button
                             variant="contained"
