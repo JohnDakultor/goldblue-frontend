@@ -48,20 +48,20 @@ export default function Footer() {
                 {t('contactUs')}
               </Link>{" "}
               |
-              <Link color="inherit" href="/privacy">
+              {/* <Link color="inherit" href="/privacy">
                 {t('privacyPolicy')}
               </Link>{" "}
               |
               <Link color="inherit" href="/terms">
                 {t('termsOfService')}
-              </Link>
+              </Link> */}
             </Typography>
-            <Typography variant="body2" color="textSecondary" align="center">
+            {/* <Typography variant="body2" color="textSecondary" align="center">
               {t('followUs')}:{" "}
               <Link color="inherit" href="https://instagram.com">
                 Instagram
               </Link>
-            </Typography>
+            </Typography> */}
           </Container>
         </footer>
 

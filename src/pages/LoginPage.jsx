@@ -15,7 +15,7 @@ import Axios from "axios";
 import { useAuth } from "../services/Authentication";
 import HomeIcon from "@mui/icons-material/Home"; // Replace with your icon or image path
 
-import goldBlue from "../assets/goldblue-icon.png";
+import goldBlue from "../assets/goldblue-icon(2).png";
 
 
 export default function LoginPage() {

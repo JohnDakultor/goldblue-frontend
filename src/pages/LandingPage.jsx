@@ -10,7 +10,7 @@ import image1 from "../assets/mobile-fast-payment.png";
 import image2 from "../assets/friendly-ui.jpg";
 import image3 from "../assets/security.jpg";
 import image4 from "../assets/track-payment.jpg";
-import goldblueLogo from "../assets/goldblue-logo.png";
+import goldblueLogo from "../assets/goldblue-logo(2).png";
 
 const rows = [
   {
