@@ -126,13 +126,35 @@ const Deposit = () => {
 
                     {/* Deposit Amount */}
                     <TextField
-                        label="Enter Amount you have deposited"
-                        variant="outlined"
-                        fullWidth
-                        sx={{ mt: 3, color: "var(--primary-text-color)" }}
-                        value={amount}
-                        onChange={(e) => setAmount(e.target.value)}
-                    />
+    label="Enter Amount you have deposited"
+    variant="outlined"
+    fullWidth
+    sx={{
+        mt: 3,
+        '& .MuiOutlinedInput-root': {
+            '& fieldset': {
+                borderColor: 'var(--input-border-color)',
+            },
+            '&:hover fieldset': {
+                borderColor: 'var(--select-text-color)',
+            },
+            '&.Mui-focused fieldset': {
+                borderColor: 'var(--select-text-color)',
+            },
+            '& input': {
+                color: 'var(--select-text-color)',  // Text color for the input
+            },
+        },
+        '& .MuiInputLabel-root': {
+            color: 'var(--select-text-color)', // Label color
+        },
+        '& .MuiFormLabel-root.Mui-focused': {
+            color: 'var(--select-text-color)', // Focused label color
+        }
+    }}
+    value={amount}
+    onChange={(e) => setAmount(e.target.value)}
+/>
 
                     {/* Image Uploader with Preview */}
                     <Box sx={{ mt: 3 }}>
