@@ -17,40 +17,44 @@ export default function About() {
                 </Typography>
                 <Box sx={{ mt: 4 }}>
                     <Typography variant="body1" paragraph>
-                        GoldBlue is an innovative gold payment platform designed to simplify your transaction experiences. 
-                        We understand that in today’s fast-paced world, convenience and security are paramount. That's why GoldBlue offers a seamless, secure way to make payments, allowing you to easily manage your transactions in one centralized location. 
-                        With our user-friendly interface, you can quickly send and receive payments, ensuring that your financial dealings are as efficient as possible.
+                        The London Gold Market is the crucial market for gold. It is the biggest marketplace for gold in the world by the volume of trade. Currently, the gold market is dominated by these two centers of gold trading. The London market is structurally different from centralized exchanges, yet it provides many useful services for the gold investing community. It clears most transactions in the global gold market, which are settled by transfers of GoldBlue through its clearing system. Moreover, the London market maintains the global standard for the quality of gold bars and offers vaulting services.
                     </Typography>
                     <Typography variant="body1" paragraph>
-                        One of the standout features of GoldBlue is our unique referral system. By inviting friends and family to join our platform, you can earn a percentage of their transactions. This not only benefits you but also helps grow our community, creating a network of users who can enjoy the benefits of GoldBlue together. 
-                        This innovative approach means that your earning potential is not limited to just your transactions; the more people you refer, the more you can earn, making it a fantastic opportunity for passive income.
+                        The London market also sets the gold fix – the so-called GOLD BLUE Price – serving as a benchmark for pricing gold widely used by producers, consumers, and investors. Every investor has their reasons for picking specific investments, and investing in gold can offer a hedge against inflation and economic uncertainty. It also diversifies an investment portfolio, reducing overall risk due to its potentially low correlation with other asset classes.
                     </Typography>
                     <Typography variant="body1" paragraph>
-                        Security is at the forefront of our mission. GoldBlue employs advanced encryption and security measures to protect your financial information. We ensure that your transactions are not only easy but also safe, giving you peace of mind as you navigate your financial needs.
+                        Throughout history, gold has been seen as a valuable commodity. Today, owning gold can act as a hedge against inflation and deflation alike, and it also serves as a good portfolio diversifier. Gold can provide financial cover during geopolitical and macroeconomic uncertainty, and it has practical applications in industries such as electronics and dentistry.
                     </Typography>
                     <Typography variant="body1" paragraph>
-                        In addition to secure transactions and a rewarding referral program, GoldBlue provides a simple and efficient withdrawal process. You can easily access your earnings whenever you need them, ensuring that your money is always within reach. 
-                        Whether you’re using GoldBlue for personal transactions or business purposes, we strive to deliver a seamless experience tailored to your needs.
+                        Gold is becoming easier to acquire, and you can now own gold without having to physically maintain or secure it by simply being one of the GoldBlue trading partners. With GoldBlue, you can enjoy life to the fullest and happy earnings.
                     </Typography>
-                    <Typography variant="body1" paragraph>
-                        At GoldBlue, our goal is to revolutionize how individuals and businesses handle their transactions. We believe that everyone should have access to efficient, secure payment solutions that empower them to take control of their financial futures. 
-                        We are committed to continuous improvement and innovation, ensuring that we stay at the forefront of the payment platform industry.
-                    </Typography>
+                    
+                    {/* Mission and Vision sections retained as requested */}
                     <Typography variant="h5" sx={{ mt: 4 }} gutterBottom>
                         Our Vision
                     </Typography>
                     <Typography variant="body1" paragraph>
-                        To be the leading gold payment platform that empowers individuals and businesses to engage in secure, seamless transactions, while fostering a community of growth and shared success.
+                    To be the most trusted precious metals trading company fulfilling the requirements of our clients and investors while giving them their  daily profitable earnings. 
+
+At the heart  of Gold Blue we look to make profitable but balanced transactions for all our suppliers, traders and investors and to continue to build on our strong foundations.
+
+
+“To be the best private Gold Trading company in the world”
+
+We look to develop world-class trading structures and initiatives, through the creation of independent fundamental research. This enables us to be at the fore front of the gold trading markets and improve life standard of every individual.
+
                     </Typography>
                     <Typography variant="h5" sx={{ mt: 4 }} gutterBottom>
                         Our Mission
                     </Typography>
                     <Typography variant="body1" paragraph>
-                        To provide a user-friendly, secure payment solution that simplifies financial transactions for everyone. We aim to create a rewarding ecosystem through our referral program, ensuring that our users can earn while helping others benefit from our services. Through innovation and commitment to security, we strive to redefine the payment landscape and enhance the financial well-being of our users.
+                    To be the development partner of choice in the international mining and gold industry.
+To be a leader in safety, environmental protection and corporate social responsibility.
+To generate superior value and investor returns through prudent investment and effective project development.
+To be a leader in innovation and efficiency for successful profit sharing for all investors.
                     </Typography>
                     <Typography variant="body1" paragraph>
-                        Join us today and experience a new way to handle your payments. With GoldBlue, you can transact with confidence, maximize your earnings through our referral program, and enjoy the benefits of being part of a vibrant, growing community. 
-                        Together, we can redefine the payment landscape, making it more accessible, rewarding, and secure for everyone.
+                        Join us today and experience a new way to handle your payments. With GoldBlue, you can transact with confidence, maximize your earnings through our referral program, and enjoy the benefits of being part of a vibrant, growing community. Together, we can redefine the payment landscape, making it more accessible, rewarding, and secure for everyone.
                     </Typography>
                 </Box>
             </Container>
