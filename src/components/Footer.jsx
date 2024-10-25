@@ -37,7 +37,7 @@ export default function Footer() {
         <footer>
           <Container>
             <Typography variant="body2" color="textSecondary" align="center">
-              {t('copyright')} {year} GoldBlue. {t('allRightsReserved')}
+              {t('copyright')} {year} Grab Bridge. {t('allRightsReserved')}
             </Typography>
             <Typography variant="body2" color="textSecondary" align="center">
               <Link color="inherit" href="/about">

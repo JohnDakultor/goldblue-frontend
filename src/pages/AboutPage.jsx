@@ -10,7 +10,7 @@ export default function About() {
             <Header />
             <Container sx={{ mt: 5 }}>
                 <Typography variant="h3" align="center" gutterBottom>
-                    About GoldBlue
+                    About Grab Bridge
                 </Typography>
                 <Typography variant="h6" align="center" gutterBottom>
                     Your Trusted Gold Payment Platform
@@ -36,7 +36,7 @@ export default function About() {
                     <Typography variant="body1" paragraph>
                     To be the most trusted precious metals trading company fulfilling the requirements of our clients and investors while giving them their  daily profitable earnings. 
 
-At the heart  of Gold Blue we look to make profitable but balanced transactions for all our suppliers, traders and investors and to continue to build on our strong foundations.
+At the heart  of Grab Bridge we look to make profitable but balanced transactions for all our suppliers, traders and investors and to continue to build on our strong foundations.
 
 
 “To be the best private Gold Trading company in the world”
@@ -54,7 +54,7 @@ To generate superior value and investor returns through prudent investment and e
 To be a leader in innovation and efficiency for successful profit sharing for all investors.
                     </Typography>
                     <Typography variant="body1" paragraph>
-                        Join us today and experience a new way to handle your payments. With GoldBlue, you can transact with confidence, maximize your earnings through our referral program, and enjoy the benefits of being part of a vibrant, growing community. Together, we can redefine the payment landscape, making it more accessible, rewarding, and secure for everyone.
+                        Join us today and experience a new way to handle your payments. With Grab Bridge, you can transact with confidence, maximize your earnings through our referral program, and enjoy the benefits of being part of a vibrant, growing community. Together, we can redefine the payment landscape, making it more accessible, rewarding, and secure for everyone.
                     </Typography>
                 </Box>
             </Container>

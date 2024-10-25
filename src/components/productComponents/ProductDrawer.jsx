@@ -177,7 +177,7 @@ export default function ProductDrawer() {
             
             />
           <Typography variant="h6" noWrap component="div">
-            GoldBlue
+            GrabBridge
           </Typography>
         </Toolbar>
       </AppBar>

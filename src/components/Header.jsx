@@ -102,7 +102,7 @@ export default function Header({ children }) {
                 alt="logo-goldblue"
                 style={{ height: "40px", marginRight: 8 }}
               />
-              GoldBlue
+              GrabBridge
             </Typography>
 
             {/* Mobile logo */}
@@ -124,7 +124,7 @@ export default function Header({ children }) {
                 alt="logo-goldblue"
                 style={{ height: "30px", marginRight: 8 }}
               />
-              GoldBlue
+              GrabBridge
             </Typography>
 
             {/* Desktop menu items */}
