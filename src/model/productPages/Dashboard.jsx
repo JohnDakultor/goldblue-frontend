@@ -15,10 +15,10 @@ import SavingsIcon from "@mui/icons-material/Savings";
 import LocalAtmIcon from "@mui/icons-material/LocalAtm"; // Icon for withdrawals
 import withUserData from "../../components/UserData";
 import Carousel from "../../components/Carousel";
-import img1 from "../../assets/1.jpeg";
-import img2 from "../../assets/2.jpg";
-import img3 from "../../assets/3.jpg";
-import img4 from "../../assets/4.jpg";
+import img1 from "../../assets/c-1.jpg";
+import img2 from "../../assets/c-2.png";
+import img3 from "../../assets/c-3.png";
+import img4 from "../../assets/c-4.png";
 import videoSrc from "../../assets/goldbluevid.mp4"; // Import the video
 import { getTransactions, getWithdrawTransactions } from "../../services/Axios";
 import "../../App.css";
